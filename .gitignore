@@ -33,4 +33,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# env
 nextjs-google-credentials.json
+.env
+
+# personal preference
+package-lock.json

@@ -7,7 +7,7 @@ export async function processImage(imagePath: string) {
   const client = new vision.ImageAnnotatorClient({
     sslCreds: credentials
   });
-  const [result] = await client.labelDetection(imagePath);
-  
+  const [result] = await client.textDetection(imagePath);
+
   return result;
 }

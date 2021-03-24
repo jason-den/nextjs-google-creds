@@ -1,4 +1,4 @@
-import { processImage } from "../shared/processImage";
+import { processImage } from '../shared/processImage';
 
 export default function Home({ imageUrl, data }) {
   return (
@@ -11,21 +11,24 @@ export default function Home({ imageUrl, data }) {
       </div>
       <hr />
       <h3>Data</h3>
-      <div>{JSON.stringify(data)}</div>
+      <div>
+        {data.map((line) => (
+          <div>{line}</div>
+        ))}
+      </div>
     </div>
   );
 }
 
 export async function getServerSideProps({ query }) {
-  const imageUrl =
-    query.image ??
-    "http://i3.kym-cdn.com/photos/images/facebook/000/242/592/1c8.jpg";
-  const data = await processImage(imageUrl);
+  const imageUrl = query.image ?? 'http://i3.kym-cdn.com/photos/images/facebook/000/242/592/1c8.jpg';
+  const res = await processImage(imageUrl);
+  const data = res.textAnnotations[0]?.description.split('\n') || ['No data available'];
 
   return {
     props: {
       imageUrl,
-      data,
-    },
+      data
+    }
   };
 }
