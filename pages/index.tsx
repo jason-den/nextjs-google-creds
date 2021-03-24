@@ -12,8 +12,8 @@ export default function Home({ imageUrl, data }) {
       <hr />
       <h3>Data</h3>
       <div>
-        {data.map((line) => (
-          <div>{line}</div>
+        {data.map((line, i) => (
+          <div key={i}>{line}</div>
         ))}
       </div>
     </div>
